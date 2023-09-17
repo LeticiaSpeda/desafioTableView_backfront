@@ -3,9 +3,8 @@ import UIKit
 final class HomeTableViewCell: UITableViewCell {
     static let identifier =  String(describing: HomeTableViewCell.self)
     
-    private lazy var carBradLabel: UILabel = {
+     lazy var carBradLabel: UILabel = {
         let label = UILabel()
-        label.text = "Ford"
         label.textColor = .black
         label.font = .boldSystemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -55,6 +54,7 @@ final class HomeTableViewCell: UITableViewCell {
     }
     
     private func configureStyle() {
-        backgroundColor = .systemCyan
+        backgroundColor = .blue.withAlphaComponent(0.3)
+        selectionStyle = .none
     }
 }
