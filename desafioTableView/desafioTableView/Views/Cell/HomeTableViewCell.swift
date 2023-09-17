@@ -11,7 +11,7 @@ final class HomeTableViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var carImage: UIImageView = {
+     lazy var carImage: UIImageView = {
         let imgView = UIImageView()
         imgView.contentMode = .scaleAspectFit
         imgView.translatesAutoresizingMaskIntoConstraints = false
@@ -31,9 +31,9 @@ final class HomeTableViewCell: UITableViewCell {
         configureStyle()
     }
     
-    func setupCell(_ carName: String, nameImage: String) {
-        carBradLabel.text = carName
-        carImage.image = UIImage(named: nameImage)
+    func setupCell(_ data: Car) {
+        carBradLabel.text = data.carBrand
+        carImage.image = data.carBrandImage
     }
     
     private func configureHierarchy() {
