@@ -6,14 +6,13 @@ final class HomeTableViewCell: UITableViewCell {
      lazy var carBradLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.font = .boldSystemFont(ofSize: 14)
+        label.font = .boldSystemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private lazy var carImageFixed: UIImageView = {
-        let image = UIImage(named: "car")
-        let imgView = UIImageView(image: image)
+    private lazy var carImage: UIImageView = {
+        let imgView = UIImageView()
         imgView.contentMode = .scaleAspectFit
         imgView.translatesAutoresizingMaskIntoConstraints = false
         return imgView
@@ -32,29 +31,35 @@ final class HomeTableViewCell: UITableViewCell {
         configureStyle()
     }
     
+    func setupCell(_ carName: String, nameImage: String) {
+        carBradLabel.text = carName
+        carImage.image = UIImage(named: nameImage)
+    }
+    
     private func configureHierarchy() {
-        contentView.addSubview(carImageFixed)
+        contentView.addSubview(carImage)
         contentView.addSubview(carBradLabel)
     }
     
     private func configuraContraints() {
         NSLayoutConstraint.activate([
-            carImageFixed.topAnchor.constraint(equalTo: contentView.topAnchor),
-            carImageFixed.heightAnchor.constraint(equalToConstant: 45),
-            carImageFixed.widthAnchor.constraint(equalToConstant: 45),
-            carImageFixed.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            carImageFixed.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            carImage.topAnchor.constraint(equalTo: contentView.topAnchor),
+            carImage.heightAnchor.constraint(equalToConstant: 60),
+            carImage.widthAnchor.constraint(equalToConstant: 60),
+            carImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            carImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
             carBradLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            carBradLabel.leadingAnchor.constraint(equalTo: carImageFixed.trailingAnchor, constant: 8),
-            carBradLabel.bottomAnchor.constraint(equalTo: carImageFixed.bottomAnchor),
+            carBradLabel.leadingAnchor.constraint(equalTo: carImage.trailingAnchor, constant: 8),
+            carBradLabel.bottomAnchor.constraint(equalTo: carImage.bottomAnchor),
             
+            contentView.heightAnchor.constraint(equalToConstant: 130)
 
         ])
     }
     
     private func configureStyle() {
-        backgroundColor = .blue.withAlphaComponent(0.3)
+        backgroundColor = .white
         selectionStyle = .none
     }
 }
